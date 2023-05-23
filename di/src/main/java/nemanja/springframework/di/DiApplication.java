@@ -1,9 +1,6 @@
 package nemanja.springframework.di;
 
-import nemanja.springframework.di.controller.ConstructorInjectedController;
-import nemanja.springframework.di.controller.MyController;
-import nemanja.springframework.di.controller.PropertyInjectedController;
-import nemanja.springframework.di.controller.SetterInjectedController;
+import nemanja.springframework.di.controller.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -34,6 +31,11 @@ public class DiApplication {
 		System.out.println("-------- PrimaryBean");
 		String primaryGreeting = myController.sayHalloFromPrimaryBean();
 		System.out.println(primaryGreeting);
+
+		System.out.println("-------- I18n");
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHallo());
 	}
 
 }
