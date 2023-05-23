@@ -30,6 +30,10 @@ public class DiApplication {
 		System.out.println("------- Constructor");
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("-------- PrimaryBean");
+		String primaryGreeting = myController.sayHalloFromPrimaryBean();
+		System.out.println(primaryGreeting);
 	}
 
 }
