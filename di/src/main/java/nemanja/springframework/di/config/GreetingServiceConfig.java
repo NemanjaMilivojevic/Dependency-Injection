@@ -1,5 +1,7 @@
 package nemanja.springframework.di.config;
 
+import nemanja.springframework.di.repository.EnglishGreetingRepository;
+import nemanja.springframework.di.repository.EnglishGreetingRepositoryImpl;
 import nemanja.springframework.di.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,10 +31,14 @@ public class GreetingServiceConfig {
     PrimaryGreetingService primaryGreetingService() {
         return new PrimaryGreetingService();
     }
+    @Bean
+    EnglishGreetingRepository englishGreetingRepository(){
+        return new EnglishGreetingRepositoryImpl();
+    }
     @Profile({"EN"})
     @Bean
-    I18nEnglishGreetingService I18nService() {
-        return new I18nEnglishGreetingService();
+    I18nEnglishGreetingService I18nService(EnglishGreetingRepository englishGreetingRepository) {
+        return new I18nEnglishGreetingService(englishGreetingRepository);
     }
     @Profile({"ES","default"})
     @Bean("I18nService")
